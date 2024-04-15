@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+table{
+    width: 100%;
+    height: 100%;
+}
+
+table,td,th{
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+
+.one{
+    background-color: blue;
+}
+
+.two{
+    background-color: yellow;
+}
+
+.three{
+    background-color: blue;
+}
+
+.four{
+    position: relative;
+    width: 70%;
+}
+
+.cat{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+
+.five{
+    background-color: yellow;
+}
+
+.row2{
+    height: 400px;
+}
+
+.column{
+    height: 50px;
+}
+
+.one:hover{
+    background-color: blueviolet;
+}
+
+.two:hover{
+    background-color:bisque;
+}
+
+.three:hover{
+    border: 5px solid red;
+}
+
+.four:hover{
+    background-image: url(https://www.wikihow.com/images/thumb/f/fe/What_kind_of_cat_am_i.png/728px-What_kind_of_cat_am_i.png);
+}
+
+.five:hover{
+    background-color: gray;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lab2(1).css">
+</head>
+<body>
+    <div>
+    <table>
+        <colgroup>
+            <col span="5">
+            <col span="2" class="weekend">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+    <script>
+        let tabelBody = document.querySelector("table tbody");
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let daysInMonth = new Date(currentDate.getFullYear(), currentMonth + 1, 0).getDate();
+
+        let row = document.createElement("tr");
+        for (let i = 1; i <= daysInMonth; i++) {
+            let dayOfWeek = new Date(currentDate.getFullYear(), currentMonth, i).getDay();
+            if (i === 1) {
+                // Fill in empty cells for the days before the 1st of the month
+                for (let j = 0; j < dayOfWeek; j++) {
+                    row.innerHTML += "<td></td>";
+                }
+            }
+            row.innerHTML += `<td>${i}</td>`;
+            if (dayOfWeek === 6 || i === daysInMonth) {
+                tabelBody.appendChild(row);
+                row = document.createElement("tr");
+            }
+        }
+    </script>
+</body>
+</html>
