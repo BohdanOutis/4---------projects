@@ -1,0 +1,22 @@
+.cont{
+    display: flex;
+    background-color: violet;
+}
+
+.one{
+    background-color: red;
+    width: 133px;
+    height: 200px;
+}
+
+.two{
+    display: flex;
+    background-color: blue;
+    width: 20px;
+    height: 200px;
+    justify-self: flex-end;
+}
+
+.cont:hover .two{
+    width: 400px;
+}

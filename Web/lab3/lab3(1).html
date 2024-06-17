@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" class="form-control" id="surname" name="surname">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" name="city">
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" class="form-control" id="country" name="country">
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Zip code:</label>
+                <input type="text" class="form-control" id="zipcode" name="zipcode">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div id="validationResult" class="mt-3"></div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const surname = document.getElementById('surname').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const country = document.getElementById('country').value.trim();
+            const zipcode = document.getElementById('zipcode').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            let validationResult = '';
+
+            // Validation logic
+            if (name === '' || surname === '' || address === '' || city === '' || country === '' || zipcode === '' || email === '') {
+                validationResult = 'All fields are required.';
+            } else if (!/^[a-zA-Z]+$/.test(name) || !/^[a-zA-Z]+$/.test(surname)) {
+                validationResult = 'Name and surname should contain only letters.';
+            } else if (zipcode.length !== 5 || !/^\d+$/.test(zipcode)) {
+                validationResult = 'Zip code should be a 5-digit number.';
+            } else if (!email.includes('@')) {
+                validationResult = 'Invalid email address.';
+            } else {
+                validationResult = 'Form submitted successfully!';
+            }
+
+            document.getElementById('validationResult').innerHTML = `<div class="alert alert-${validationResult === 'Form submitted successfully!' ? 'success' : 'danger'}">${validationResult}</div>`;
+        });
+    </script>
+</body>
+</html>

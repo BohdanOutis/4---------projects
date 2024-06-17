@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lab3(3).css">
+</head>
+<body>
+    <div id = "rectangle"></div>
+    <script>
+        const rectangle = document.getElementById("rectangle");
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        
+        let x = 0;
+        let y = 0;
+        let xSpeed = 10;
+        let ySpeed = 10;
+
+        function move(){
+            x += xSpeed;
+            y += ySpeed;
+
+            if(x + rectangle.offsetWidth > windowWidth || x < 0){
+                xSpeed *= -1;
+            }
+
+            if(y + rectangle.offsetHeight > windowHeight || y < 0){
+                ySpeed *= -1;
+            }
+
+            rectangle.style.left = x + "px";
+            rectangle.style.top = y + "px";
+        }
+
+        setInterval(move, 15);
+
+        rectangle.onmouseenter = function(event){
+            xSpeed = 0;
+            ySpeed = 0;
+        }
+
+        rectangle.onmouseleave = function(event){
+            xSpeed = 10;
+            ySpeed = 10;
+        }
+        
+    </script>
+</body>
+</html>
